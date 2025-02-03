@@ -18,10 +18,22 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/tiket', function () {
+    return Inertia::render('Tiket');
+})->middleware(['auth', 'verified'])->name('tiket');
+
+Route::get('/history', function () {
+    return Inertia::render('History');
+})->middleware(['auth', 'verified'])->name('history');
+
+Route::get('/management', function () {
+    return Inertia::render('Management');
+})->middleware(['auth', 'verified'])->name('management');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
