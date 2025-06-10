@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
 use App\Models\Kereta;
+use App\Http\Controllers\Controller;
 use Database\Seeders\kereta as SeedersKereta;
 use Illuminate\Http\Request;
 

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
 use App\Models\kursi;
+use App\Http\Controllers\Controller;
 use Database\Seeders\kereta as SeedersKereta;
 // use Database\Seeders\kursi;
 use Illuminate\Http\Request;
@@ -24,8 +25,7 @@ class kursiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'Kursi' => 'required|string',
-            'kelas' => 'required|string',
+            'no_kursi' => 'required|string',
             'id_gerbong' => 'required|exists:gerbong,id',
         ]);
 
@@ -51,8 +51,7 @@ class kursiController extends Controller
         $kursi = Kursi::findOrFail($id);
 
         $validated = $request->validate([
-            'Gerbong' => 'required|string',
-            'kelas' => 'required|string',
+            'no_kursi' => 'required|string',
             'id_gerbong' => 'required|exists:gerbong,id',
 
         ]);

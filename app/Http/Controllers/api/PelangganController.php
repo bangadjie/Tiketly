@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
 use App\Models\Pelanggan;
+use App\Http\Controllers\Controller;
 use Database\Seeders\pelanggan as SeedersPelanggan;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+
 
 class PelangganController extends Controller
 {
@@ -51,7 +54,7 @@ class PelangganController extends Controller
         $pelanggan = Pelanggan::findOrFail($id);
 
         $validated = $request->validate([
-            'NIK' => 'required|string|unique:pelanggan,NIK',
+            'NIK' => ['required', 'string', Rule::unique('pelanggan', 'NIK')->ignore($id)],
             'alamat' => 'required|string',
             'telp' => 'required|string|max:20',
             'id_user' => 'required|exists:users,id',

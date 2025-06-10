@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
 use App\Models\Gerbong;
-use App\Models\Kereta;
-use Database\Seeders\kereta as SeedersKereta;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class gerbongController extends Controller
@@ -24,9 +23,10 @@ class gerbongController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'Gerbong' => 'required|string',
+            'gerbong' => 'required|string',
             'kelas' => 'required|string',
-            'id_kereta' => 'required|exists:kereta,id',
+            // 'id_kereta' => 'required|exists:kereta,id',
+            'id_kereta' => 'required|integer',
         ]);
 
         $gerbong = Gerbong::create($request->all());
@@ -51,9 +51,10 @@ class gerbongController extends Controller
         $gerbong = Gerbong::findOrFail($id);
 
         $validated = $request->validate([
-            'Gerbong' => 'required|string',
+            'gerbong' => 'required|string',
             'kelas' => 'required|string',
-            'id_kereta' => 'required|exists:kereta,id',
+            // 'id_kereta' => 'required|exists:kereta,id',
+            'id_kereta' => 'required|integer',
 
         ]);
 

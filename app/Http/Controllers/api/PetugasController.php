@@ -2,9 +2,11 @@
 
 
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
 use App\Models\Petugas;
+use App\Http\Controllers\Controller;
+use Database\Seeders\petugas as petugasseeder;
 use Illuminate\Http\Request;
 
 class petugasController extends Controller
